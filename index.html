@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1 class="title-with-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" alt="" width="100"> 
+            <p>Atletas do Botafogo em 2023-2</p>
+        </br>
+        </h1>
+    </header>
+    
+    <div class="login-container">
+        <h4>Digite a senha ("senha")</h4>
+        <form>
+            <input type="password" id="senha" placeholder="Senha" onkeydown="verificarTecla(event)">
+            <button type="button" onclick="verificarSenhaERedirecionar()">Enviar</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
