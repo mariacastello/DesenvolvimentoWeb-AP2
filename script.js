@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     
-    const btnSair = document.getElementById("btnSair");
-    if (btnSair) {
-        btnSair.addEventListener("click", function () {
+    const botaoSair = document.getElementById("botaoSair");
+    if (botaoSair) {
+        botaoSair.addEventListener("click", function () {
             localStorage.removeItem('autenticado'); 
             location.replace("index.html"); 
         });
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function verificarSenhaERedirecionar() {
+function verificarSenha() {
     const senhaDigitada = document.getElementById('senha').value;
     const senhaHash = CryptoJS.MD5(senhaDigitada).toString();
 
@@ -35,28 +35,28 @@ function verificarSenhaERedirecionar() {
 function verificarTecla(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        verificarSenhaERedirecionar();
+        verificarSenha();
     }
 }
 
 
-const btnEnviar = document.querySelector('button');
-if (btnEnviar) {
-    btnEnviar.addEventListener("click", function () {
-        verificarSenhaERedirecionar();
+const botaoEnviar = document.querySelector('button');
+if (botaoEnviar) {
+    botaoEnviar.addEventListener("click", function () {
+        verificarSenha();
     });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
    
-    const btnElencoFeminino = document.getElementById("adicionarElencoFeminino");
-    const btnElencoMasculino = document.getElementById("adicionarElencoMasculino");
-    const btnElencoAmbos = document.getElementById("adicionarElencoCompleto");
+    const botaoElencoFeminino = document.getElementById("ElencoFeminino");
+    const botaoElencoMasculino = document.getElementById("ElencoMasculino");
+    const botaoElencoAmbos = document.getElementById("ElencoCompleto");
 
   
-    btnElencoFeminino.addEventListener("click", () => carregarElenco("feminino"));
-    btnElencoMasculino.addEventListener("click", () => carregarElenco("masculino"));
-    btnElencoAmbos.addEventListener("click", () => carregarElenco("all"));
+    botaoElencoFeminino.addEventListener("click", () => carregarElenco("feminino"));
+    botaoElencoMasculino.addEventListener("click", () => carregarElenco("masculino"));
+    botaoElencoAmbos.addEventListener("click", () => carregarElenco("all"));
 
     
     function carregarElenco(genero) {
@@ -115,10 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const btnVoltar = document.getElementById("btnVoltar");
+    const botaoVoltar = document.getElementById("botaoVoltar");
 
-    if (btnVoltar) {
-        btnVoltar.addEventListener("click", function () {
+    if (botaoVoltar) {
+        botaoVoltar.addEventListener("click", function () {
             window.location.href = "home.html";
         });
     }
