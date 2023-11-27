@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" sizes="16x16">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elenco Botafogo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
+    <title>Elenco Botafogo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <header>
-        <h1 class="title-with-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" alt="" width="100"> 
-            <p>Atletas do Botafogo em 2023-2</p>
-        </br>
-        </h1>
-        <button id="botaoSair" class="action-button">Sair</button>
+    <header class="main-header">
+        <div class="header-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" alt="Botafogo Emblem" width="100">
+            <h1>Atletas do Botafogo em 2023-2</h1>
+        </div>
+        <button id="exitButton" class="exit-button">Sair</button>
     </header>
 
-    <div id="botoesElenco">
-        <button id="ElencoFeminino" class="elenco-button">Elenco feminino</button>
-        <button id="ElencoMasculino" class="elenco-button">Elenco masculino</button>
-        <button id="ElencoCompleto" class="elenco-button">Elenco Completo</button>
-    </br>
-    </div>
+    <section class="team-buttons">
+        <button id="ElencoFeminino" class="team-button">Elenco Feminino</button>
+        <button id="ElencoMasculino" class="team-button">Elenco Masculino</button>
+        <button id="ElencoCompleto" class="team-button">Elenco Completo</button>
+    </section>
 
-    <div id="elenco" class="elenco-container">     
-    </div>
+    <main id="elenco" class="team-container">
+    </main>
 
     <script src="script.js"></script>
 </body>

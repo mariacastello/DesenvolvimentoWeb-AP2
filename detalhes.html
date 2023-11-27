@@ -3,33 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" sizes="16x16">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do jogador</title>
+    <title>Detalhes do Jogador</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="detalhes-body">
-    <header>
-        <h1 class="title-with-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" alt="" width="100"> 
-            <p>História do jogador</p>
+<body class="player-details-body">
+    <header class="player-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_Botafogo.png/640px-Escudo_Botafogo.png" alt="Botafogo Emblem" width="100">
+        <div class="header-title">
+            <h1>História do jogador</h1>
         </br>
-        </h1>
-        <button id="botaoSair">Sair</button>
+            <button id="exitButton" class="exit-button">Sair</button>
+        </div>
     </header>
-    
-    <div class="detalhes-container">
-        <div class="detalhes-imagem">
-            
-        </div>
 
-        <div class="detalhes-jogador">
-            
-        </div>
-    </div>
+    <main class="details-container">
+        <section class="player-image-section">
+        </section>
 
-    <button id="botaoVoltar">Voltar</button>
+        <section class="player-info-section">
+        </section>
+    </main>
+
+    <footer class="details-footer">
+        <button id="returnButton">Voltar</button>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <script src="script.js"></script>

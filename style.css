@@ -23,7 +23,7 @@ body {
     padding: 20px;
 }
 
-.login-container, .detalhes-container {
+.login-main, .details-container {
     background-color: var(--gray-light); 
     border-radius: 10px;
     padding: 20px;
@@ -45,13 +45,13 @@ button:hover, input[type="button"]:hover {
 }
 
 
-#botoesElenco button {
+#buttonElenco button {
     width: 80%;
     max-width: 200px;
 }
 
 
-.elenco-container {
+.team-container {
     border: 2px solid var(--gray-dark);
     background-color: var(--gray-light);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -66,19 +66,19 @@ button:hover, input[type="button"]:hover {
 
 
 @media (max-width: 768px) {
-    .elenco-container {
+    .team-container {
         grid-template-columns: 1fr;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .elenco-container {
+    .team-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1025px) {
-    .elenco-container {
+    .team-container {
         grid-template-columns: repeat(4, 1fr);
         max-width: 1200px;
         margin: auto;
@@ -93,16 +93,16 @@ body.detalhes-body {
     padding: 30px;
 }
 
-.detalhes-imagem, .detalhes-jogador {
+.player-image-section, .player-info-section {
     padding: 30px;
 }
 
-.detalhes-jogador h2 {
+.player-info-section h2 {
     font-size: 2.5em;
     margin-bottom: 15px;
 }
 
-.detalhes-jogador img {
+.player-info-section img {
     width: 100%;
     height: auto;
     max-height: 400px;
@@ -110,14 +110,14 @@ body.detalhes-body {
     display: block;
 }
 
-.detalhes-jogador p {
+.player-info-section p {
     font-size: 1.2em;
     margin-bottom: 15px;
     text-align: left;
 }
 
 
-#btnVoltar {
+#returnButton {
     margin-top: 30px;
     padding: 15px 30px;
     background-color: var(--gray);
@@ -125,8 +125,8 @@ body.detalhes-body {
     font-size: 18px;
 }
 
-#btnVoltar:hover {
-    background-color: var(--black);
+#returnButton:hover {
+    background-color: var(--grey);
 }
 
 /* Estilos para detalhes.html */
@@ -135,35 +135,25 @@ body.detalhes-body {
     color: var(--white); 
 }
 
-.detalhes-container {
+.details-container {
     background-color: var(--gray-light); 
     color: var(--black);
 }
 
 
-#btnVoltar {
-    background-color: var(--gray);
-    color: var(--white);
-}
-
-#btnVoltar:hover {
-    background-color: var(--black);
-}
-
-/* Estilos para a página de login */
-.login-container {
+.login-main {
     background-color: var(--gray-light); 
     color: var(--black); 
 }
 
-/* Botões e Inputs na página de login */
-.login-container button, .login-container input[type="password"], .login-container input[type="button"] {
+
+.login-main button, .login-main input[type="password"], .login-main input[type="button"] {
     color: var(--black); 
     background-color: var(--white);
     border: 1px solid var(--gray); 
 }
 
-.login-container button:hover, .login-container input[type="button"]:hover {
+.login-main button:hover, .login-main input[type="button"]:hover {
     background-color: var(--gray); 
     color: var(--white);  
 }
@@ -207,32 +197,37 @@ button, .botao, input[type="button"], a {
 }
 
 /* Estilos para o container de detalhes do jogador */
-.detalhes-container {
+.details-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: var(--gray-light); 
+    background-color: var(--gray-light);
+    color: var(--black);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Limita a largura para tornar o layout mais compacto */
+    margin: auto; /* Centraliza o container na página */
 }
 
-/* Estilo para a seção de imagem */
-.detalhes-imagem {
+
+
+.player-image-section {
     flex: 1;
     max-width: 300px; 
     text-align: center;
 }
 
-.detalhes-imagem img {
+.player-image-section img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
-/* Estilo para a seção de informações do jogador */
-.detalhes-jogador {
+
+.player-info-section {
     flex: 2;
     max-width: 400px;
     display: flex;
@@ -240,20 +235,14 @@ button, .botao, input[type="button"], a {
     justify-content: center;
 }
 
-.detalhes-jogador h2 {
+.player-info-section h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.detalhes-jogador p {
+.player-info-section p {
     font-size: 1em;
     margin-bottom: 5px;
-}
-
-.jogador-detalhes {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
 }
 
 @media (max-width: 600px) {
@@ -263,7 +252,7 @@ button, .botao, input[type="button"], a {
 }
 
 @media (max-width: 600px) {
-    .detalhes-container {
+    .details-container {
         flex-direction: column;
         align-items: center;
     }
@@ -316,6 +305,4 @@ a, input[type="text"], input[type="button"] {
 a:hover, input[type="text"]:hover, input[type="button"]:hover {
     color: var(--gray-light);
 }
-
-
 

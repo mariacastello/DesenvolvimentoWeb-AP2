@@ -1,9 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", () => {
 
     
-    const botaoSair = document.getElementById("botaoSair");
-    if (botaoSair) {
-        botaoSair.addEventListener("click", function () {
+    const exitButton = document.getElementById("exitButton");
+    if (exitButton) {
+        exitButton.addEventListener("click", () => {
             localStorage.removeItem('autenticado'); 
             location.replace("index.html"); 
         });
@@ -18,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function verificarSenha() {
-    const senhaDigitada = document.getElementById('senha').value;
-    const senhaHash = CryptoJS.MD5(senhaDigitada).toString();
+function checkPassword() {
+    const writtenPassword = document.getElementById('senha').value;
+    const passwordHash = CryptoJS.MD5(writtenPassword).toString();
 
-    if (senhaHash === "e8d95a51f3af4a3b134bf6bb680a213a") {
+    if (passwordHash === "e8d95a51f3af4a3b134bf6bb680a213a") {
         localStorage.setItem('autenticado', 'true'); 
         window.location.href = "home.html";
     } else {
@@ -32,49 +33,47 @@ function verificarSenha() {
 
 
 
-function verificarTecla(event) {
+function checkKeyPress(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        verificarSenha();
+        checkPassword();
     }
 }
 
 
-const botaoEnviar = document.querySelector('button');
-if (botaoEnviar) {
-    botaoEnviar.addEventListener("click", function () {
-        verificarSenha();
+const submitButton = document.querySelector('button');
+if (submitButton) {
+    submitButton.addEventListener("click", () => {
+        checkPassword();
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-   
-    const botaoElencoFeminino = document.getElementById("ElencoFeminino");
-    const botaoElencoMasculino = document.getElementById("ElencoMasculino");
-    const botaoElencoAmbos = document.getElementById("ElencoCompleto");
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonElencoFeminino = document.getElementById("ElencoFeminino");
+    const buttonElencoMasculino = document.getElementById("ElencoMasculino");
+    const buttonElencoAmbos = document.getElementById("ElencoCompleto");
 
-  
-    botaoElencoFeminino.addEventListener("click", () => carregarElenco("feminino"));
-    botaoElencoMasculino.addEventListener("click", () => carregarElenco("masculino"));
-    botaoElencoAmbos.addEventListener("click", () => carregarElenco("all"));
-
+    if (buttonElencoFeminino) buttonElencoFeminino.addEventListener("click", () => loadCast("feminino"));
+    if (buttonElencoMasculino) buttonElencoMasculino.addEventListener("click", () => loadCast("masculino"));
+    if (buttonElencoAmbos) buttonElencoAmbos.addEventListener("click", () => loadCast("all"));
+});
     
-    function carregarElenco(genero) {
+    function loadCast(genero) {
         const elencoContainer = document.getElementById("elenco");
-        const carregandoElemento = document.createElement('p');
-        carregandoElemento.className = 'carregando';
-        carregandoElemento.textContent = 'Carregando...';
+        const loadingElemento = document.createElement('p');
+        loadingElemento.className = 'carregando';
+        loadingElemento.textContent = 'Carregando...';
         elencoContainer.innerHTML = '';
-        elencoContainer.appendChild(carregandoElemento);    
+        elencoContainer.appendChild(loadingElemento);    
 
         fetch(`https://botafogo-atletas.mange.li/${genero}`)
             .then(response => response.json())
             .then(data => {
-                elencoContainer.removeChild(carregandoElemento);
+                elencoContainer.removeChild(loadingElemento);
                 data.forEach(jogador => {
                     const cardAtleta = document.createElement('div');
                     cardAtleta.className = 'atleta-card';
-                    cardAtleta.dataset.jogadorId = jogador.id;
+                    cardAtleta.dataset.playerId = jogador.id;
 
                     const imagemAtleta = document.createElement('img');
                     imagemAtleta.className = 'atleta-img';
@@ -96,50 +95,49 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error(`Erro ao buscar jogadores ${genero}:`, error);
             });
     }
-});
+;
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const elencoContainer = document.getElementById("elenco");
     
-    elencoContainer.addEventListener("click", function (event) {
-        const cardClicado = event.target.closest(".atleta-card");
-        if (cardClicado) {
-            const jogadorId = cardClicado.dataset.jogadorId;
-            mostrarDetalhesJogadorPorId(jogadorId);
-        }
-    });
-
-    function mostrarDetalhesJogadorPorId(jogadorId) {
-        window.location.href = `detalhes.html?jogador=${jogadorId}`;
+    if (elencoContainer) {
+        elencoContainer.addEventListener("click", function(event) {
+            const card = event.target.closest(".atleta-card");
+            if (card) {
+                const playerId = card.dataset.playerId;
+                playerDetails(playerId);
+            }
+        });
     }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-    const botaoVoltar = document.getElementById("botaoVoltar");
+    function playerDetails(playerId) {
+        window.location.href = `detalhes.html?jogador=${playerId}`;
+    }
+});  
 
-    if (botaoVoltar) {
-        botaoVoltar.addEventListener("click", function () {
+
+document.addEventListener("DOMContentLoaded", () => {
+    const returnButton = document.getElementById("returnButton");
+
+    if (returnButton) {
+        returnButton.addEventListener("click", () => {
             window.location.href = "home.html";
         });
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const detalhesContainer = document.querySelector('.detalhes-container');
-
-   
+document.addEventListener("DOMContentLoaded", () => {
+    const detailsContainer = document.querySelector('.details-container');
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const jogadorId = urlParams.get('jogador');
+    const playerId = urlParams.get('jogador');
 
-    
-    if (jogadorId) {
-        mostrarDetalhesPorId(jogadorId);
+    if (playerId && detailsContainer) {
+        displayDetailsById(playerId);
     }
 
-    function mostrarDetalhesPorId(jogadorId) {
-    
-        fetch(`https://botafogo-atletas.mange.li/${encodeURIComponent(jogadorId)}`)
+    function displayDetailsById(playerId) {
+        fetch(`https://botafogo-atletas.mange.li/${encodeURIComponent(playerId)}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Erro na resposta da API: ${response.status} - ${response.statusText}`);
@@ -147,9 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(data => {
-                detalhesContainer.innerHTML = '';
-
-                if (data && data.nome) {
+                if (detailsContainer) {
+                    detailsContainer.innerHTML = '';
                     const detalhesJogador = document.createElement('div');
                     detalhesJogador.className = 'detalhes-jogador';
 
@@ -162,8 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p>Nascimento: ${data.nascimento || 'N/A'}</p>
                         <p>Altura: ${data.altura || 'N/A'}</p>
                     `;
-
-                    detalhesContainer.appendChild(detalhesJogador);
+                    detailsContainer.appendChild(detalhesJogador);
 
                     const detalhesImagem = document.createElement('div');
                     detalhesImagem.className = 'detalhes-imagem';
@@ -171,8 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     detalhesImagem.innerHTML = `
                         <img src="${data.imagem || ''}" alt="${data.nome}">
                     `;
-                    detalhesContainer.appendChild(detalhesImagem);
-                } 
+                    detailsContainer.appendChild(detalhesImagem);
+                }
             })
+            .catch(error => {
+                console.error('Erro ao buscar detalhes do jogador:', error);
+            });
     }
 });
